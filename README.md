@@ -14,7 +14,7 @@ purpose: **smode-mcp** lets Claude drive Smode, **Smode Server HTTP** gives your
 
 ## Install
 
-1. Drag `smode_server_http.py` into your Smode project: it becomes a **Script**.
+1. Drag `smode_server_http.py` into your Smode project.
 2. Set its **Launch Mode** to **At Every Update** (the server hands the work to Smode's main thread through a
    queue, which is only processed while the Script updates).
 3. Choose a **Port** (default `8892`) and, only if other machines must reach it, fill **Host** with the IP(s) of
