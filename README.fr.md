@@ -45,8 +45,28 @@ curl http://127.0.0.1:8892/run/1
 curl -X POST http://127.0.0.1:8892/exec --data-urlencode "code=result = len(script.project.masterScene.layers)"
 ```
 
-Dans Chataigne, un module HTTP pointé sur `127.0.0.1` et le port, avec une requête comme `/run/1`, suffit pour
-déclencher un Script depuis un bouton de Stream Deck.
+## Déclencher des Scripts depuis Chataigne (Stream Deck, tout client HTTP)
+
+![Paramètres du Script dans Smode](docs/smode-bridge-parameters.png)
+
+*Les captures ci-dessous viennent du pont [smode-mcp](https://github.com/gyomh/smode-mcp), qui se présente de la même
+façon dans Chataigne et dans Smode : avec Smode Server HTTP, le port par défaut est `8892` au lieu de `8891`, et il
+a aussi les paramètres **Host** et **Token**.*
+
+Dans Chataigne, ajoutez un module **HTTP** dont la **Base Address** est `http://127.0.0.1:8892` (ou l'IP donnée dans
+**Host**, depuis une autre machine), puis une conséquence qui envoie une requête :
+
+![Module HTTP et conséquence dans Chataigne](docs/chataigne-http-module.png)
+
+- **Le plus simple :** méthode `GET`, adresse `/run/1` (slot 1) ou `/run/mon_script` (par nom).
+- **Comme sur les captures :** méthode `POST`, adresse `/`, argument `code` avec `run_slot(1)` ou
+  `run_script("mon_script")`. C'est le même format que le pont smode-mcp : les projets Chataigne existants se
+  réutilisent ; la requête doit venir de la machine qui fait tourner Smode (ou porter le **Token**), car elle passe
+  par `/exec`.
+
+![Conséquence utilisant run_script](docs/chataigne-run-script.png)
+
+Associez ensuite la conséquence à un bouton de Stream Deck dans Chataigne.
 
 ## Sécurité
 
