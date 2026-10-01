@@ -15,7 +15,7 @@ contrôle.
 
 ## Installation
 
-1. Créez un **Script** dans votre projet Smode et collez-y le contenu de `smode_server_http.py`.
+1. Glissez `smode_server_http.py` dans votre projet Smode : il devient un **Script**.
 2. Mettez son **Launch Mode** sur **At Every Update** (le serveur confie le travail au fil principal de Smode via
    une file, qui n'est traitée que pendant la mise à jour du Script).
 3. Choisissez un **Port** (par défaut `8892`) et, seulement si d'autres machines doivent y accéder, renseignez
